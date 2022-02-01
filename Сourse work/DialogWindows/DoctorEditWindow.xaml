@@ -1,0 +1,179 @@
+﻿<Window x:Class="DenisovArt_Kurs.DialogWindows.DoctorEditWindow"
+ xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:DenisovArt_Kurs.DialogWindows"
+        mc:Ignorable="d"
+        Title="Окно регистрации" Icon="/Images/Ic.jpg"
+        Height="425" Width="650" ResizeMode="NoResize">
+
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="55"></RowDefinition>
+            <RowDefinition Height="10"></RowDefinition>
+            <RowDefinition Height="55"></RowDefinition>
+            <RowDefinition Height="55"></RowDefinition>
+            <RowDefinition Height="55"></RowDefinition>
+            <RowDefinition Height="55"></RowDefinition>
+            <RowDefinition Height="55"></RowDefinition>
+            <RowDefinition ></RowDefinition>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="120"></ColumnDefinition>
+            <ColumnDefinition></ColumnDefinition>
+            <ColumnDefinition Width="25"></ColumnDefinition>
+            <ColumnDefinition Width="170"></ColumnDefinition>
+            <ColumnDefinition></ColumnDefinition>
+        </Grid.ColumnDefinitions>
+
+        <Image  Grid.Row="1" Grid.RowSpan="6" Grid.Column="0" Grid.ColumnSpan="5"
+               Height="300" Width="450"
+               Source="/Images/iconPol.png"  Stretch="Fill" 
+                Opacity="0.6"/>
+        
+        <TextBlock Grid.Row="0" Grid.ColumnSpan="5" Style="{StaticResource HeaderUseControl}">Регистрация врачей поликлиники</TextBlock>
+        <Separator Grid.Row="1" Grid.ColumnSpan="4" BorderBrush="Gray"></Separator>
+
+        <Label Grid.Row="2" Grid.Column="0" Style="{StaticResource LabelForEditorWindows}"
+               Content="Фамилия"/>
+        <Border Grid.Row="2" Grid.Column="1" Style="{StaticResource OvalBorder}"
+                Margin="0,10,0,10">
+            <TextBox Name="tbxSecName" Style ="{StaticResource ValidationFailed}"
+                     BorderBrush="White" FontFamily="Times New Roman" FontSize="14" 
+                     TextAlignment="Left">
+                <TextBox.Text>
+                    <Binding Path="MySecondName" ValidatesOnExceptions="True" 
+                                         UpdateSourceTrigger="LostFocus"/>
+                </TextBox.Text>
+            </TextBox>
+        </Border >
+
+        <Label Grid.Row="3" Grid.Column="0" Style="{StaticResource LabelForEditorWindows}"
+               Content="Имя"/>
+        <Border Grid.Row="3" Grid.Column="1" Style="{StaticResource OvalBorder}"
+                Margin="0,10,0,10">
+            <TextBox Name="tbxFirName" Style ="{StaticResource ValidationFailed}"
+                     BorderBrush="White" FontFamily="Times New Roman" FontSize="14" TextAlignment="Left">
+                <TextBox.Text>
+                    <Binding Path="MyFirstName" ValidatesOnExceptions="True" 
+                                         UpdateSourceTrigger="LostFocus"/>
+                </TextBox.Text>
+            </TextBox>
+        </Border >
+
+        <Label Grid.Row="4" Grid.Column="0" Style="{StaticResource LabelForEditorWindows}"
+               Content="Отчество"/>
+        <Border Grid.Row="4" Grid.Column="1" Style="{StaticResource OvalBorder}"
+                Margin="0,10,0,10">
+            <TextBox Name="tbxThirdName" Style ="{StaticResource ValidationFailed}"
+                     BorderBrush="White" FontFamily="Times New Roman" FontSize="14" TextAlignment="Left">
+                <TextBox.Text>
+                    <Binding Path="MyThirdName" ValidatesOnExceptions="True" 
+                                         UpdateSourceTrigger="LostFocus"/>
+                </TextBox.Text>
+            </TextBox>
+        </Border >
+
+        <Label Grid.Row="5" Grid.Column="0" Style="{StaticResource LabelForEditorWindows}"
+               Content="Специальность"/>
+        <Border Grid.Row="5" Grid.Column="1" Style="{StaticResource OvalBorder}"
+                Margin="0,10,0,10">
+            <ComboBox Name="combbDocSpecialityt"
+                                FontWeight="Normal" Height="30" 
+                                Background="White" BorderBrush="White" 
+                                BorderThickness="0"
+                                FontFamily="Times New Roman" FontSize="16" 
+                                ItemsSource ="{Binding Path=docSpecsColl}"
+                                DisplayMemberPath="SpecialityTitle"
+                                SelectedIndex="0"/>
+        </Border >
+        
+        <Label Grid.Row="2" Grid.Column="3" Style="{StaticResource LabelForEditorWindows}"
+               Content="Кабинет"/>
+        <Border Grid.Row="2" Grid.Column="4" Style="{StaticResource OvalBorder}"
+                Margin="0,10,0,10">
+            <TextBox Name="tbxRoom" Style ="{StaticResource ValidationFailed}"
+                     BorderBrush="White" FontFamily="Times New Roman" 
+                     FontSize="14" TextAlignment="Left">
+                <TextBox.Text>
+                    <Binding Path="MyRoom" ValidatesOnExceptions="True" 
+                                         UpdateSourceTrigger="LostFocus"/>
+                </TextBox.Text>
+            </TextBox>
+        </Border >
+
+        <Label Grid.Row="3" Grid.Column="3" Style="{StaticResource LabelForEditorWindows}"
+               Content="Смена" Foreground="Black" />
+        <Border Grid.Row="3" Grid.Column="4" Style="{StaticResource OvalBorder}"
+                Margin="0,10,0,10">
+            <ComboBox Name="lboxWorkShifting"
+                Height="25" 
+                Background="White" BorderBrush="White" BorderThickness="0"
+                VerticalContentAlignment="Center" HorizontalContentAlignment="Center"
+                FontSize="16" FontFamily="Times New Roman" FontWeight="UltraBlack"
+                SelectedIndex="0">
+                <ComboBoxItem>1</ComboBoxItem>
+                <ComboBoxItem>2</ComboBoxItem>
+            </ComboBox>
+        </Border >
+
+        <Button Grid.Row="4" Grid.Column="3"
+                Name="btnGenerate"
+                Click="btnGenerateTickets_Click"
+                Width="130" Height="40" Margin="10,0,10,0"
+                FontWeight="Normal" FontSize="16"
+                FontFamily="Times New Roman"
+                Style="{StaticResource AddButton}"
+                Content="Сгенерировать&#xD;&#xA;       талоны"
+                />
+        <Border Grid.Row="4" Grid.Column="4" Style="{StaticResource OvalBorder}"
+                Margin="0,10,0,10">
+            <DatePicker Name="dateGenerateTickets" Height="30" Margin="0,0,0,0"/>
+        </Border >
+
+        <Label Grid.Row="5" Grid.Column="3" Style="{StaticResource LabelForEditorWindows}"
+               Content=" Просмотреть &#xD;&#xA;талоны на дату" Foreground="Black"
+               HorizontalContentAlignment="Center"/>
+        <Border Grid.Row="5" Grid.Column="4" Style="{StaticResource OvalBorder}"
+                Margin="0,10,0,10">
+            <DatePicker Name="dateGetTickets" Height="30" Margin="0,0,0,0"
+                        SelectedDateChanged="dateGetTickets_SelectedDateChanged"/>
+        </Border >
+
+        <Button Grid.Row="6" Grid.Column="3"
+                Name="btnDelete"
+                Click="btnDeleteTickets_Click"
+                Width="130" Height="40" Margin="10,0,10,0"
+                FontWeight="Normal" FontSize="16"
+                FontFamily="Times New Roman"
+                Style="{StaticResource ExitButton}"
+                Content="Очистить&#xD;&#xA;  талоны"
+                />
+
+        <Border Grid.Row="6" Grid.Column="4" Style="{StaticResource OvalBorder}"
+                Margin="0,10,0,10">
+            <ComboBox Name="combbDocTickets"
+                        FontWeight="Normal" 
+                        FontFamily="Times New Roman"
+                        Height="30" 
+                        Background="White" BorderBrush="White" 
+                        BorderThickness="0"
+                        IsReadOnly="true"
+                        ItemsSource ="{Binding Path=docTickets}"
+                        DisplayMemberPath="VisitDateTime"
+                        SelectedIndex="0"/>
+        </Border >
+
+            <Button Grid.Row="7" Grid.Column="1"
+                    Click="btnOk_Click"
+                    Width="120" Height="40" Margin="0,0,0,0"
+                    FontWeight="Bold" FontSize="16"
+                >Подтвердить</Button>
+            <Button Grid.Row="7" Grid.Column="3"
+                    Click="btnCancel_Click"
+                    Width="120" Height="40" Margin="3,0,0,0"
+                    FontWeight="Bold" FontSize="16"
+                >Отменить</Button>
+    </Grid>
+</Window>

@@ -1,0 +1,52 @@
+﻿<Window x:Class="Lab4.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:gif="http://wpfanimatedgif.codeplex.com"
+        xmlns:Lab4_Control="clr-namespace:Lab4_Control;assembly=Lab4_Control"
+        xmlns:local="clr-namespace:Lab4"
+        mc:Ignorable="d"
+        Title="Lab.4_Warships" Height="600" Width="800" ResizeMode="CanMinimize" KeyDown="Key_Down" >
+    <Grid Name="GameInterface">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="450"/>
+            <RowDefinition Height="150"/>
+        </Grid.RowDefinitions>
+        <Rectangle Fill="SaddleBrown" Grid.Row="1"/>
+        <Button x:Name ="Fire" 
+                Click="Fire_Click"
+                Content="Огонь!" BorderBrush="SaddleBrown" Background="Red" 
+                HorizontalAlignment="Left" Margin="348,21,0,0"
+                Grid.Row="1" VerticalAlignment="Top" Width="122" Height="50"
+                FontSize="30" FontWeight="Bold" Padding="0,-10,0,0"
+                ToolTip="Press W"/>
+        <Label Content="Скорость торпеды" FontSize="16" FontWeight="Bold"
+               HorizontalAlignment="Left" Margin="541,75,0,0" 
+               Grid.Row="1" VerticalAlignment="Top"/>
+        <Label Content="Координаты корабля" FontSize="16" FontWeight="Bold"
+               HorizontalAlignment="Left" Margin="8,75,0,0" 
+               Grid.Row="1" VerticalAlignment="Top" Width="223"  />
+        <TextBox x:Name="SpeedTorpedo" HorizontalAlignment="Left" Height="35" Margin="696,75,0,0" IsReadOnly="True"
+                 Grid.Row="1" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="75" ToolTip="Press Stop + Torpedo" 
+                 FontSize="16" FontWeight="Bold" BorderBrush="SaddleBrown" RenderTransformOrigin="0.76,0.6"/>
+        <TextBox x:Name="Coordinates" HorizontalAlignment="Left" Height="35" Margin="189,75,0,0" IsReadOnly="True"
+                 Grid.Row="1" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="75" ToolTip="Press Stop + Ship" 
+                 FontSize="16" FontWeight="Bold" BorderBrush="SandyBrown" RenderTransformOrigin="-4.653,2.099"/>
+        <Button x:Name ="Start" Content="Старт/Пауза" FontSize="20" FontWeight="Bold" Padding="0,-5,0,0" 
+                Background="Wheat" BorderBrush="Brown"
+                HorizontalAlignment="Left" Margin="10,10,0,0" 
+                Grid.Row="1" VerticalAlignment="Top" Width="140" Height="50" Click="Start_Click"/>
+        <Button x:Name ="Reset"  Content="Сброс" FontSize="25" FontWeight="Bold" Padding="0,-5,0,0"
+                Background="Wheat" BorderBrush="Brown" HorizontalAlignment="Left" Margin="631,10,0,0" 
+                Grid.Row="1" VerticalAlignment="Top" Width="140" Height="50" Click="Reset_Click"  />
+        <Button x:Name="LeftButton" HorizontalAlignment="Left" Margin="280,10,0,0" Grid.Row="1" VerticalAlignment="Top" 
+                 Width="57" Height="75" BorderBrush="SaddleBrown" Background="SandyBrown" MouseDown="Left_Down"
+                ToolTip="Press A"/>
+        <Button x:Name="RightButton"  HorizontalAlignment="Left" Margin="482,10,0,0" Grid.Row="1" VerticalAlignment="Top"
+                Width="57" Height="75" BorderBrush="SaddleBrown" Background="SandyBrown" 
+                MouseDown="Right_Down"  
+                ToolTip="Press D"/>
+        <Lab4_Control:UCSubmarineAttack Name="UCSea" Grid.Row ="0" />
+    </Grid>
+</Window>

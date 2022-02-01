@@ -1,0 +1,145 @@
+﻿<Window x:Class="Lab3_2.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Lab3_2"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="350" Width="525" ResizeMode="NoResize" WindowStartupLocation="CenterScreen" >
+    <Window.Resources>
+        <ControlTemplate x:Key="ErrorTempl">
+            <StackPanel Orientation="Horizontal">
+                <Border BorderThickness="1" BorderBrush="Red" >
+                    <AdornedElementPlaceholder></AdornedElementPlaceholder>
+                </Border>
+                <TextBlock Foreground="Red" FontSize="24">!</TextBlock>
+            </StackPanel>
+        </ControlTemplate>
+        <Style TargetType="Label">
+            <Setter Property="HorizontalAlignment" Value="Center"/>
+            <Setter Property="VerticalAlignment" Value="Top"/>
+            <Setter Property="Height" Value="24"/>
+            <Setter Property="Width" Value="65"/>
+            <Setter Property="Margin" Value="0,15,0,0" />
+        </Style>
+        <Style TargetType="TextBox">
+            <Setter Property="HorizontalAlignment" Value="Left"/>
+            <Setter Property="VerticalAlignment" Value="Top"/>
+            <Setter Property="Height" Value="24"/>
+            <Setter Property="Width" Value="140"/>
+            <Setter Property="Margin" Value="5,15,0,0" />
+            <Setter Property="Validation.ErrorTemplate" Value="{StaticResource ErrorTempl}"/>
+            <Style.Triggers>
+                <Trigger Property="Validation.HasError" Value="true">
+                    <Setter Property="ToolTip"
+                            Value="{Binding 
+                                RelativeSource={x:Static RelativeSource.Self},
+                                Path=(Validation.Errors)[0].ErrorContent}"/>
+                    <Setter Property="Background" Value="Pink"/>
+                </Trigger>
+            </Style.Triggers>
+        </Style>
+        <Style TargetType="ComboBox">
+            <Setter Property="HorizontalAlignment" Value="Left"/>
+            <Setter Property="VerticalAlignment" Value="Top"/>
+            <Setter Property="Height" Value="24"/>
+            <Setter Property="Width" Value="140"/>
+            <Setter Property="Margin" Value="5,15,0,0" />
+            <Setter Property="Validation.ErrorTemplate" Value="{StaticResource ErrorTempl}"/>
+            <Style.Triggers>
+                <Trigger Property="Validation.HasError" Value="true">
+                    <Setter Property="ToolTip"
+                            Value="{Binding 
+                                RelativeSource={x:Static RelativeSource.Self},
+                                Path=(Validation.Errors)[0].ErrorContent}"/>
+                    <Setter Property="Background" Value="Pink"/>
+                </Trigger>
+            </Style.Triggers>
+        </Style>
+    </Window.Resources>
+    <Grid Name="AppGrid">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="80"/>
+            <ColumnDefinition Width="150"/>
+            <ColumnDefinition Width="15"/>
+            <ColumnDefinition/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+        </Grid.RowDefinitions>
+        <Label x:Name="Lb_SecondName" Content="Sec. Name" Grid.Column="0" Grid.Row="0"/>
+        <Label x:Name="Lb_Salary" Content="Salary." Grid.Column="0" Grid.Row="1"/>
+        <Label x:Name="Lb_Status" Content="Status" Grid.Column="0" Grid.Row="2"/>
+        <Label x:Name="Lb_City" Content="City" Grid.Column="0" Grid.Row="3"/>
+        <Label x:Name="Lb_Street" Content="Street" Grid.Column="0" Grid.Row="4"/>
+        <Label x:Name="Lb_HouseNum" Content="House" Grid.Column="0" Grid.Row="5"/>
+        <!--Input Data Elements-->
+        <TextBox x:Name="Txb_SecondName" HorizontalAlignment="Left" Grid.Column="1" Grid.Row="0" 
+                     Text="{Binding Path=SecName, 
+                            ValidatesOnExceptions=True, 
+                            UpdateSourceTrigger=PropertyChanged }"/>
+        <TextBox x:Name="Txb_Salary" HorizontalAlignment="Left" Grid.Column="1" Grid.Row="1"
+                    Text="{Binding Path=Salary, 
+                            ValidatesOnExceptions=True, 
+                            UpdateSourceTrigger=PropertyChanged }"/>
+        <ComboBox x:Name="Txb_Status" HorizontalAlignment="Left" Grid.Column="1" Grid.Row="2" 
+                  IsEditable="True"
+                  Text="{Binding Path=WorkStatus, 
+                            ValidatesOnExceptions=True, 
+                            UpdateSourceTrigger=PropertyChanged }">
+            <ComboBoxItem Content="Economist"/>
+            <ComboBoxItem Content="Project Manager"/>
+            <ComboBoxItem Content="Junior Dev"/>
+            <ComboBoxItem Content="Senior Dev"/>
+            <ComboBoxItem Content="Teamlead"/>
+            <ComboBoxItem Content="Architector"/>
+            <ComboBoxItem Content="Director"/>
+        </ComboBox>
+        <ComboBox x:Name="Txb_City" HorizontalAlignment="Left" 
+                    Grid.Column="1" Grid.Row="3" 
+                    IsEditable="True"
+                    Text="{Binding Path=City, 
+                            ValidatesOnExceptions=True, 
+                            UpdateSourceTrigger=PropertyChanged }">
+            <ComboBoxItem Content="Minsk"/>
+            <ComboBoxItem Content="Vitebsk"/>
+            <ComboBoxItem Content="Mogilev"/>
+            <ComboBoxItem Content="Orscha"/>
+            <ComboBoxItem Content="Chist"/>
+            <ComboBoxItem Content="Oshmjiani"/>
+        </ComboBox>
+        <ComboBox x:Name="Txb_Street" HorizontalAlignment="Left" Grid.Column="1" Grid.Row="4" 
+                    IsEditable="True" 
+                    Text="{Binding Path=Street, 
+                            ValidatesOnExceptions=True, 
+                            UpdateSourceTrigger=PropertyChanged }">
+            <ComboBoxItem Content="Zaslavskaya str."/>
+            <ComboBoxItem Content="Pobeditelei pr."/>
+            <ComboBoxItem Content="Karl Marx str."/>
+            <ComboBoxItem Content="Lenina str."/>
+            <ComboBoxItem Content="Korolja str."/>
+            <ComboBoxItem Content="Schorsa str."/>
+        </ComboBox>
+        <TextBox x:Name="Txb_HouseNum" HorizontalAlignment="Left" Grid.Column="1" Grid.Row="5" 
+                Text="{Binding Path=HouseNumber, 
+                            ValidatesOnExceptions=True, 
+                            UpdateSourceTrigger=PropertyChanged }"/>
+        <!--ErrorLabels-->
+        <Label x:Name="Err_SecondName" Content="!" Grid.Column="2" Grid.Row="0" Visibility="Hidden" Foreground="Red" FontSize="28" Height="50" Width="25" Margin="0,0,0,0"/>
+        <Label x:Name="Err_Salary" Content="!" Grid.Column="2" Grid.Row="1" Visibility="Hidden" Foreground="Red" FontSize="28" Height="50" Width="25" Margin="0,0,0,0"/>
+        <Label x:Name="Err_Status" Content="!" Grid.Column="2" Grid.Row="2" Visibility="Hidden" Foreground="Red" FontSize="28" Height="50" Width="25" Margin="0,0,0,0"/>
+        <Label x:Name="Err_City" Content="!" Grid.Column="2" Grid.Row="3" Visibility="Hidden" Foreground="Red" FontSize="28" Height="50" Width="25" Margin="0,0,0,0"/>
+        <Label x:Name="Err_Street" Content="!" Grid.Column="2" Grid.Row="4" Visibility="Hidden" Foreground="Red" FontSize="28" Height="50" Width="25" Margin="0,0,0,0"/>
+        <Label x:Name="Err_HouseNum" Content="!" Grid.Column="2" Grid.Row="5" Visibility="Hidden" Foreground="Red" FontSize="28" Height="50" Width="25" Margin="0,0,0,0"/>
+        <!--Result controls-->
+        <ListBox x:Name="Lbox" Grid.Column="3" Grid.RowSpan="6" Margin="15,15,15,15"/>
+        <Button x:Name="BtnAdd" Content="AddToDatabase" Grid.ColumnSpan="2" Grid.Row="6" Margin="10,10,10,15" Width="200" Click="AddToDatabase_Click"/>
+        <Button x:Name="BtnSaveTextFile" Content="Save in text file" Grid.Column="4" Grid.Row="6" Margin="10,10,10,15" Width="200" Click="SaveInTextFile_Click" />
+    </Grid>
+</Window>

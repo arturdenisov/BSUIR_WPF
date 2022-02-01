@@ -1,0 +1,88 @@
+﻿<Window x:Class="Lab5.ShapeEditor"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        mc:Ignorable="d"
+        Title="Shape Editor" Height="250" Width="250" ResizeMode="NoResize" WindowStartupLocation="CenterScreen" BorderBrush="#FF0F17CD">
+    <Grid Name ="TestGrid" Background="White">
+        <Grid.RowDefinitions>
+            <RowDefinition></RowDefinition>
+            <RowDefinition></RowDefinition>
+            <RowDefinition></RowDefinition>
+            <RowDefinition></RowDefinition>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="75"></ColumnDefinition>
+            <ColumnDefinition></ColumnDefinition>
+        </Grid.ColumnDefinitions>
+        <Label Grid.Row="0" Grid.Column="0" Content="Line thickness" 
+               Padding="0,0,0,0" HorizontalContentAlignment="Center" HorizontalAlignment="Right"
+               VerticalContentAlignment="Center" VerticalAlignment="Center" Height="34" />
+        <ComboBox Grid.Row="0" Grid.Column="1" 
+                  SelectedIndex="0"  IsSynchronizedWithCurrentItem="True"
+                  Name ="dialCmb_Thickness" Height="25" Width="45"
+                  IsReadOnly="True" >
+            <ComboBoxItem Content="1"/>
+            <ComboBoxItem Content="2"/>
+            <ComboBoxItem Content="4"/>
+            <ComboBoxItem Content="6"/>
+        </ComboBox>
+        <Label Grid.Row="1" Grid.Column="0"
+            Content="Fill" Padding="0"  HorizontalContentAlignment="Center" HorizontalAlignment="Right" VerticalContentAlignment="Center" VerticalAlignment="Center" Height="34" Width="45"/>
+        <ComboBox Grid.Row="1" Grid.Column="1"
+                  Name ="dialCmb_Fill" SelectedIndex="1" Height="25" Width="125" Margin="0,0,0,0" 
+                  IsSynchronizedWithCurrentItem="True" IsReadOnly="True"  >
+            <ComboBoxItem Background="#FFE62424" Foreground="#FFE62424" >
+                <Rectangle Fill="#FFE62424" Width="125" Height="25" Margin="1,1,1,1"/>
+            </ComboBoxItem>
+            <ComboBoxItem Foreground="#FFFFBE00" Background="#FFFFBE00">
+                <Rectangle Fill="#FFFFBE00" Width="125" Height="25" Margin="1,1,1,1"/>
+            </ComboBoxItem>
+            <ComboBoxItem Background="#FFF9FF00" Foreground="#FFF9FF00">
+                <Rectangle Fill="#FFF9FF00" Width="125" Height="25" Margin="1,1,1,1"/>
+            </ComboBoxItem>
+            <ComboBoxItem Background="#FF62FF00" Foreground="#FF62FF00">
+                <Rectangle Fill="#FF62FF00" Width="125" Height="25" Margin="1,1,1,1"/>
+            </ComboBoxItem>
+            <ComboBoxItem Background="#FF00FFEE" Foreground="#FF00FFEE">
+                <Rectangle Fill="#FF00FFEE" Width="125" Height="25" Margin="1,1,1,1"/>
+            </ComboBoxItem>
+            <ComboBoxItem Background="#FF0058FF" Foreground="#FF0058FF">
+                <Rectangle Fill="#FF0058FF" Width="125" Height="25" Margin="1,1,1,1"/>
+            </ComboBoxItem>
+            <ComboBoxItem Background="#FFFF00E1" Foreground="#FFFF00E1">
+                <Rectangle Fill="#FFFF00E1" Width="125" Height="25" Margin="1,1,1,1"/>
+            </ComboBoxItem>
+        </ComboBox>
+        <Label Grid.Row="2" Grid.Column="0"
+            Content="Stroke" Padding="0"  HorizontalContentAlignment="Center" HorizontalAlignment="Right" VerticalContentAlignment="Center" VerticalAlignment="Center" Height="34" Width="45"/>
+        <ComboBox Grid.Row="2" Grid.Column="1"
+                  Name ="dialCmb_Stroke" SelectedIndex="1" Height="25" Width="125" Margin="0,0,0,0" 
+                  IsSynchronizedWithCurrentItem="True" IsReadOnly="True"  >
+            <ComboBoxItem Background="#FFE62424" Foreground="#FFE62424" >
+                <Rectangle Fill="#FFE62424" Width="125" Height="25" Margin="1,1,1,1"/>
+            </ComboBoxItem>
+            <ComboBoxItem Foreground="#FFFFBE00" Background="#FFFFBE00">
+                <Rectangle Fill="#FFFFBE00" Width="125" Height="25" Margin="1,1,1,1"/>
+            </ComboBoxItem>
+            <ComboBoxItem Background="#FFF9FF00" Foreground="#FFF9FF00">
+                <Rectangle Fill="#FFF9FF00" Width="125" Height="25" Margin="1,1,1,1"/>
+            </ComboBoxItem>
+            <ComboBoxItem Background="#FF62FF00" Foreground="#FF62FF00">
+                <Rectangle Fill="#FF62FF00" Width="125" Height="25" Margin="1,1,1,1"/>
+            </ComboBoxItem>
+            <ComboBoxItem Background="#FF00FFEE" Foreground="#FF00FFEE">
+                <Rectangle Fill="#FF00FFEE" Width="125" Height="25" Margin="1,1,1,1"/>
+            </ComboBoxItem>
+            <ComboBoxItem Background="#FF0058FF" Foreground="#FF0058FF">
+                <Rectangle Fill="#FF0058FF" Width="125" Height="25" Margin="1,1,1,1"/>
+            </ComboBoxItem>
+            <ComboBoxItem Background="#FFFF00E1" Foreground="#FFFF00E1">
+                <Rectangle Fill="#FFFF00E1" Width="125" Height="25" Margin="1,1,1,1"/>
+            </ComboBoxItem>
+        </ComboBox>
+        <Button Grid.Row="3" Grid.Column="0" Grid.ColumnSpan="2" Margin="0,0,0,0" VerticalAlignment="Center" 
+                HorizontalAlignment="Center" Width="150" Height="35" Name="btnSave" Click="btnSave_click">Save changes</Button>
+    </Grid>
+</Window>

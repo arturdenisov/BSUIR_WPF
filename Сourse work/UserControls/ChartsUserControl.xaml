@@ -1,0 +1,142 @@
+﻿<UserControl x:Class="DenisovArt_Kurs.UserControls.ChartsUserControl"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:DenisovArt_Kurs.UserControls"
+             mc:Ignorable="d" >
+    <Grid Name="UCbarDiagGrid"	
+          Height="610" Width="800">
+        <Grid.RowDefinitions>
+            <RowDefinition ></RowDefinition>
+            <RowDefinition Height="200"></RowDefinition>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="200"></ColumnDefinition>
+            <ColumnDefinition></ColumnDefinition>
+            <ColumnDefinition></ColumnDefinition>
+            <ColumnDefinition></ColumnDefinition>
+        </Grid.ColumnDefinitions>
+        <Rectangle Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="4" 
+                   Fill="White" Stroke="LightGray" ></Rectangle>
+        <Rectangle Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="2" 
+                   Fill="LightGray" Stroke="Gray" ></Rectangle>
+        <Rectangle Grid.Row="1" Grid.Column="2" Grid.ColumnSpan="2" 
+                   Fill="LightGray" Stroke="Gray" ></Rectangle>
+
+        <StackPanel Name="spPeriod" HorizontalAlignment="Right" Width="180" Grid.Row="1">
+            <Label Content="Периоды:" FontSize="20" FontFamily="Times New Roman" FontWeight="Bold"/>
+            <CheckBox Name="q1" Uid="1" Content=" 1 квартал" FontSize="20" FontFamily="Times New Roman" Checked="CheckBox_Checked" Unchecked="CheckBox_Checked"/>
+            <CheckBox Name="q2" Uid="2" Content=" 2 квартал" FontSize="20" FontFamily="Times New Roman" Checked="CheckBox_Checked" Unchecked="CheckBox_Checked"/>
+            <CheckBox Name="q3" Uid="3" Content=" 3 квартал" FontSize="20" FontFamily="Times New Roman" Checked="CheckBox_Checked" Unchecked="CheckBox_Checked"/>
+            <CheckBox Name="q4" Uid="4" Content=" 4 квартал" FontSize="20" FontFamily="Times New Roman" Checked="CheckBox_Checked" Unchecked="CheckBox_Checked"/>
+            <CheckBox Name="cbYear" Uid="12" Content=" Текущий год" FontSize="20" FontFamily="Times New Roman" Checked="CheckBox_Checked" Unchecked="CheckBox_Checked"/>
+        </StackPanel>
+
+        <StackPanel Name="spProf" HorizontalAlignment="Left" Width="200" Grid.Column="1" Grid.Row="1">
+            <Label Content="Профили услуг:" FontSize="20" FontFamily="Times New Roman" FontWeight="Bold"/>
+            <ListBox Name="lbServisesProfile"  
+                        SelectionMode="Multiple"
+                        HorizontalAlignment="Left" 
+                        Width="200" 
+                        Height="120">
+            </ListBox>
+        </StackPanel>
+
+        <StackPanel Name="RectangleEditor" Width="200" Grid.Row="1" Grid.Column="2" 
+                    Orientation="Vertical" VerticalAlignment="Center">
+
+            <Label Height="40" Width="150" Content="Цвет заливки:" FontWeight="Bold"
+               FontSize="20" FontFamily="Times New Roman" />
+
+            <ComboBox Name ="Cmb_Fill" SelectedIndex="0" Height="25" Width="125" Panel.ZIndex="1"
+                      IsSynchronizedWithCurrentItem="True" IsReadOnly="True"  
+                      Background="{Binding SelectedItem.Background, RelativeSource={RelativeSource Self}}" Focusable="False">
+                <ComboBoxItem  Background="#FFE62424" Foreground="#FFE62424">
+                    <SolidColorBrush x:Name="solidColorBrush" Color="#FFE62424"/>
+                </ComboBoxItem>
+                <ComboBoxItem Foreground="#FFFFBE00" Background="#FFFFBE00">
+                    <SolidColorBrush Color="#FFFFBE00"/>
+                </ComboBoxItem>
+                <ComboBoxItem Background="#FFF9FF00" Foreground="#FFF9FF00">
+                    <SolidColorBrush Color="#FFF9FF00"/>
+                </ComboBoxItem>
+                <ComboBoxItem Background="#FF62FF00" Foreground="#FF62FF00">
+                    <SolidColorBrush Color="#FF62FF00"/>
+                </ComboBoxItem>
+                <ComboBoxItem Background="#FF00FFEE" Foreground="#FF00FFEE">
+                    <SolidColorBrush Color="#FF00FFEE"/>
+                </ComboBoxItem>
+                <ComboBoxItem Background="#FF0058FF" Foreground="#FF0058FF">
+                    <SolidColorBrush Color="#FF0058FF"/>
+                </ComboBoxItem>
+                <ComboBoxItem Background="#FFFF00E1" Foreground="#FFFF00E1">
+                    <SolidColorBrush Color="#FFFF00E1"/>
+                </ComboBoxItem>
+            </ComboBox>
+
+            <Label Height="40" Width="150" Content="Цвет границы:" FontWeight="Bold"
+                FontSize="20" FontFamily="Times New Roman"/>
+
+            <ComboBox Name ="Cmb_Stroke" SelectedIndex="1" Height="25" Width="125" 
+                      IsSynchronizedWithCurrentItem="True" IsReadOnly="True"  
+                      Background="{Binding SelectedItem.Background, RelativeSource={RelativeSource Self}}" Focusable="False">
+                <ComboBoxItem Background="#FFE62424" Foreground="#FFE62424">
+                    <SolidColorBrush Color="#FFE62424"/>
+                </ComboBoxItem>
+                <ComboBoxItem Foreground="#FFFFBE00" Background="#FFFFBE00">
+                    <SolidColorBrush Color="#FFFFBE00"/>
+                </ComboBoxItem>
+                <ComboBoxItem Background="#FFF9FF00" Foreground="#FFF9FF00">
+                    <SolidColorBrush Color="#FFF9FF00"/>
+                </ComboBoxItem>
+                <ComboBoxItem Background="#FF62FF00" Foreground="#FF62FF00">
+                    <SolidColorBrush Color="#FF62FF00"/>
+                </ComboBoxItem>
+                <ComboBoxItem Background="#FF00FFEE" Foreground="#FF00FFEE">
+                    <SolidColorBrush Color="#FF00FFEE"/>
+                </ComboBoxItem>
+                <ComboBoxItem Background="#FF0058FF" Foreground="#FF0058FF">
+                    <SolidColorBrush Color="#FF0058FF"/>
+                </ComboBoxItem>
+                <ComboBoxItem Background="#FFFF00E1" Foreground="#FFFF00E1">
+                    <SolidColorBrush Color="#FFFF00E1"/>
+                </ComboBoxItem>
+            </ComboBox>
+
+            <StackPanel Name="spThickness" Height="40" Width="190" Orientation="Horizontal">
+                <TextBlock Width="150" Height="25" 
+                    Text="Толщина границ:" FontWeight="Bold"
+                    FontSize="18" FontFamily="Times New Roman"/>
+
+                <ComboBox Name ="Cmb_Thickness" SelectedIndex="0" Height="30" Width="40"
+                    FontSize="20" FontFamily="Times New Roman">
+                    <ComboBoxItem Content="1"/>
+                    <ComboBoxItem Content="2"/>
+                    <ComboBoxItem Content="4"/>
+                    <ComboBoxItem Content="6"/>
+                </ComboBox>
+            </StackPanel>
+
+        </StackPanel>
+
+        <StackPanel Name="RectEditButtons" Grid.Row="1" Grid.Column="4" Width="200" Height="170"
+                    Orientation="Vertical">
+            <Button HorizontalAlignment="Center" VerticalAlignment="Center" 
+                Width="120" Height="50" Foreground="DarkRed"
+                Content="Построить" FontFamily="Times New Roman" FontSize="20" FontWeight="Bold" 
+                Click="BuildDiagram_Click" />
+            <Button HorizontalAlignment="Center" VerticalAlignment="Center"
+                Width="100" Height="40"
+                Content="Изменить" FontFamily="Times New Roman" 
+                FontSize="15" FontWeight="Bold" Foreground="Green" 
+                Click="ChangeDesign_Click" />
+            <Button HorizontalAlignment="Center" VerticalAlignment="Center"
+                Width="100" Height="40"
+                Content="Очистить" FontFamily="Times New Roman" 
+                FontSize="15" FontWeight="Bold"
+                Click="ClearDiagram_Click"  />
+        </StackPanel>
+
+    </Grid>
+</UserControl>

@@ -1,0 +1,147 @@
+﻿<UserControl x:Class="DenisovArt_Kurs.UserControls.ClientsUserControl"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:DenisovArt_Kurs.UserControls"
+             mc:Ignorable="d" 
+             Background="White"
+             Style="{StaticResource StandartUseControl}">
+
+    <Grid Height="610" Width="800">	
+
+        <Grid.RowDefinitions>
+            <RowDefinition Height="25"></RowDefinition>
+            <RowDefinition Height="5"></RowDefinition>
+            <RowDefinition Height="*"></RowDefinition>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="250"></ColumnDefinition>
+            <ColumnDefinition></ColumnDefinition>
+        </Grid.ColumnDefinitions>
+
+        <Rectangle  Grid.Row="0" Grid.RowSpan="2" Grid.Column="0" Grid.ColumnSpan="2"
+               Fill="MidnightBlue" 
+               Stretch="Fill" Margin="0,0,0,0" />
+        <Image  Grid.Row="2" Grid.Column="0" Grid.ColumnSpan="2"
+               Source="/Images/UC_Clients.jpg"  Stretch="Fill" 
+                Opacity="0.6"/>
+
+        <TextBlock Grid.Row="0" Grid.ColumnSpan="3"
+                   Foreground="White" Style="{StaticResource HeaderUseControl}" 
+                   Grid.Column="1" 
+                   Height="22" 
+                   Margin="28,0,263,3" Width="209">Клиенты поликлиники</TextBlock>
+        <Separator Grid.Row="1" Grid.ColumnSpan="2" BorderBrush="Gray"></Separator>
+
+        <StackPanel Grid.Row="2" Grid.Column="0" 
+                    VerticalAlignment="Top"                    >
+
+            <GroupBox Header="     П О И С К " 
+                      Margin="0,0,0,0">
+                <StackPanel>
+                    <TextBlock Foreground="Black">(по любому полю)</TextBlock>
+                    <Label FontWeight="Bold" Foreground="Black">Номер карточки:</Label>
+                    <Border Style="{StaticResource OvalBorder}">
+                        <TextBox Name="tbxClientID" Style ="{StaticResource ValidationFailed}">
+                            <TextBox.Text>
+                                <Binding Path="MyClientID" ValidatesOnExceptions="True" 
+                                         UpdateSourceTrigger="PropertyChanged"/>
+                            </TextBox.Text>
+                        </TextBox>
+                    </Border>
+                    <Label FontWeight="Bold" Foreground="Black">Номер паспорта:</Label>
+                    <Border Style="{StaticResource OvalBorder}">
+                        <TextBox Name="tbxPassport" 
+                                  Style ="{StaticResource ValidationFailed}"
+                                 Margin="0,0,0,0">
+                            <TextBox.Text>
+                                <Binding Path="MyPassportNumber" ValidatesOnExceptions="True" 
+                                         UpdateSourceTrigger="PropertyChanged"/>
+                            </TextBox.Text>
+                        </TextBox>
+                    </Border>
+                    <Label FontWeight="Bold" 
+                           Foreground="Black"
+                           Margin="0,0,0,0"
+                           >Фамилия:
+                    </Label>
+                    <Border Style="{StaticResource OvalBorder}">
+                        <TextBox Name="tbxSecondary" Style ="{StaticResource ValidationFailed}"
+                                 Margin="0,0,0,0">
+                            <TextBox.Text>
+                                <Binding Path="MYSecondName" ValidatesOnExceptions="True" 
+                                         UpdateSourceTrigger="PropertyChanged"/>
+                            </TextBox.Text>
+                        </TextBox>
+                    </Border>
+                    <Button Name="Find_Button" 
+                            Content="Найти" 
+                            Click="Find_Button_Click"
+                            Margin="0,5,0,0"/>
+                    <Button 
+                        Name="SelectClient_Button" 
+                        Content="Выделить клиента" 
+                        Click="SelectClient_Button_Click"
+                        Style="{StaticResource AddButton}"
+                        Margin="0,5,0,0" Width="225" Height="35"/>
+                    <Button 
+                        Name="Reboot_Button" 
+                        Content="Сброс выделения / поиска" 
+                        Click="Reboot_Button_Click"
+                        Style="{StaticResource ExitButton}"
+                        Margin="0,5,0,0" Width="225" Height="35"/>
+                </StackPanel>
+            </GroupBox>
+
+            <GroupBox Header="Ф У Н К Ц И И " 
+                      Margin="0,5,0,0">
+                <StackPanel
+                    >
+                    <Button Name="Add_Button" Content="Добавить" Click="Add_Button_Click"
+                            Margin="0,5,0,0"/>
+                    <Button Name="Update_Button" Content="Обновить" Click="EditButton_Click"
+                            Margin="0,5,0,0"/>
+                    <Button Name="Delete_Button" Content="Удалить" Click="Delete_Button_Click"
+                            Margin="0,5,0,0"/>
+                </StackPanel>
+            </GroupBox>
+
+            <GroupBox Header="X M L " 
+                      Margin="0,5,0,0">
+                <StackPanel
+                        Margin="0,5,0,0">
+                    <Button Name="Export" 
+                            Content="Экспорт" 
+                            Click="Export_Click"
+                            Margin="0,5,0,0"/>
+                    <Button Name="Import" 
+                            Content="Импорт" 
+                            Click="Import_Click"
+                            Margin="0,5,0,0"/>
+                </StackPanel>
+            </GroupBox>
+        </StackPanel>
+
+        <DataGrid 
+            Name="dgrid"
+            ItemsSource="{Binding}"
+            Grid.Row="2" Grid.Column="1" 
+            Margin="15,10,15,5" 
+            AutoGenerateColumns="False"
+            IsReadOnly="True">
+
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="ID" Binding="{Binding ClientID}"/>
+                <DataGridTextColumn Header="Фамилия" Binding="{Binding SecondName}"/>
+                <DataGridTextColumn Header="Имя" Binding="{Binding FitstName}"/>
+                <DataGridTextColumn Header="Отчество" Binding="{Binding ThirdName}"/>
+                <DataGridTextColumn Header="Номер паспорта" Binding="{Binding PassportNumber}"/>
+                <DataGridTextColumn Header="Дата рождения" Binding="{Binding BirthdayDate_woutTime}"/>
+                <DataGridTextColumn Header="Контактная информация" Binding="{Binding ContactInformation}"/>
+            </DataGrid.Columns>
+        </DataGrid>
+
+    </Grid>
+
+</UserControl>

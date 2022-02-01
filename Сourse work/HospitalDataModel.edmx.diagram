@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>	
+      <Diagram DiagramId="c97aa56e2a1f4d5985b637abfe8f10cb" Name="Diagram1" ZoomLevel="78">
+        <EntityTypeShape EntityType="DenisovArt_KursProjectModel.CatalogOfService" Width="1.5" PointX="6" PointY="0.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="DenisovArt_KursProjectModel.Client" Width="1.5" PointX="3" PointY="1.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="DenisovArt_KursProjectModel.DocSpeciality" Width="1.5" PointX="8.25" PointY="0.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="DenisovArt_KursProjectModel.DocTimeTable" Width="1.5" PointX="13.125" PointY="3.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="DenisovArt_KursProjectModel.Doctor" Width="1.5" PointX="10.625" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="DenisovArt_KursProjectModel.OrderedService" Width="1.5" PointX="6.25" PointY="5.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="DenisovArt_KursProjectModel.sysdiagram" Width="1.5" PointX="21.625" PointY="0.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="DenisovArt_KursProjectModel.Ticket" Width="1.5" PointX="9.625" PointY="5.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="DenisovArt_KursProjectModel.VisitList" Width="1.5" PointX="3.125" PointY="4.875" IsExpanded="true" />
+        <AssociationConnector Association="DenisovArt_KursProjectModel.FK_OrderedServices_CatalogOfServices1" ManuallyRouted="false" />
+        <AssociationConnector Association="DenisovArt_KursProjectModel.FK_VisitLists_Clients" ManuallyRouted="false" />
+        <AssociationConnector Association="DenisovArt_KursProjectModel.FK_Doctors_DocSpecialities1" ManuallyRouted="false" />
+        <AssociationConnector Association="DenisovArt_KursProjectModel.FK_DocTimeTables_Doctors" ManuallyRouted="false" />
+        <AssociationConnector Association="DenisovArt_KursProjectModel.FK_Tickets_DocTimeTables1" ManuallyRouted="false" />
+        <AssociationConnector Association="DenisovArt_KursProjectModel.FK_OrderedServices_Tickets1" ManuallyRouted="false" />
+        <AssociationConnector Association="DenisovArt_KursProjectModel.FK_OrderedServices_VisitLists1" ManuallyRouted="false" >
+        </AssociationConnector>
+        <AssociationConnector Association="DenisovArt_KursProjectModel.DocServices" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

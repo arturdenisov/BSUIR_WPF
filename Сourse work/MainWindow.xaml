@@ -1,0 +1,134 @@
+﻿<Window x:Class="DenisovArt_Kurs.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        mc:Ignorable="d"
+        Title="80321 Денисов А.Ю. Курсовой проект" 
+        Height="700" Width="800" 
+        ResizeMode="NoResize"
+        Icon="/Images/first-aid.png"
+        Style="{StaticResource StandartWindow}">
+    <Window.Resources>
+        <Style TargetType="MenuItem">
+            <Setter Property="BorderThickness" Value="1"/>
+            <Setter Property="Foreground" Value="Black"/>
+        </Style>
+    </Window.Resources>
+    <Grid Name="mainGrid">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="23"></RowDefinition>
+            <RowDefinition></RowDefinition>
+            <RowDefinition Height="30"></RowDefinition>
+        </Grid.RowDefinitions>
+
+        <Menu Grid.Row="0"
+              MaxHeight="50"
+            FontFamily="Times New Roman" FontSize="16" 
+              VerticalAlignment="Top"
+              BorderBrush="LightGray">
+            <MenuItem Header="На главную" BorderBrush="LightGray" 
+                      Click="MenuRegister_Click" ></MenuItem>
+            <MenuItem Header="Аналитическая информация" BorderBrush="LightGray">
+                <MenuItem Header="Динамика посещений" Click="MenuBarCharts_Click"/>
+                <MenuItem Header="Структура продаж" Click="MenuPieCharts_Click"/>
+            </MenuItem>
+            <MenuItem Header="О программе" BorderBrush="LightGray" Click="About_Click"/>
+        </Menu>
+
+        <Grid Grid.Row="1" >
+            <Grid.RowDefinitions>
+                <RowDefinition Height="45"></RowDefinition>
+                <RowDefinition Height="10"></RowDefinition>
+                <RowDefinition></RowDefinition>
+                <RowDefinition Height="125"></RowDefinition>
+            </Grid.RowDefinitions>
+
+            <Image  Grid.Row="0" Grid.RowSpan="4"
+               Source="/Images/Start2.jpg"  
+                    Stretch="Fill" />
+
+            <TextBlock Grid.Row="0" FontWeight="Heavy" FontStyle="Oblique" FontSize="20" Margin="10,10,10,10" 
+                   VerticalAlignment="Bottom">Выберите действие</TextBlock>
+            <Separator Grid.Row="1" BorderBrush="Gray"></Separator>
+
+            <StackPanel Grid.Row="2"
+            Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Center">
+
+                <Button Style="{StaticResource HomeButton}" Click="ClientUserControl_Click">
+                    <TextBlock TextWrapping="Wrap" TextAlignment="Center"> <Run FontWeight="Heavy"  Text="КЛИЕНТЫ"/> <LineBreak/> <Run    Text="(поиск, регистрация)" /></TextBlock>
+                </Button>
+
+                <Button Style="{StaticResource HomeButton}" Click="VisitListsControl_Click">
+                    <TextBlock TextWrapping="Wrap" TextAlignment="Center"> <Run FontWeight="Heavy"  Text="ЛИСТЫ ПОСЕЩЕНИЯ"/> <LineBreak/> <Run Text="(оформление)" /></TextBlock>
+                </Button>
+
+                <Button Style="{StaticResource HomeButton}" Click="DoctosControl_Click">
+                    <TextBlock TextWrapping="Wrap" TextAlignment="Center"> <Run FontWeight="Heavy"  Text="ВРАЧИ"/> <LineBreak/> <Run Text="(поиск, регистрация)" /></TextBlock>
+                </Button>
+
+                <Button Style="{StaticResource HomeButton}" Click="ServicesControl_Click">
+                    <TextBlock TextWrapping="Wrap" TextAlignment="Center" > <Run FontWeight="Heavy"  Text="УСЛУГИ"/><LineBreak/><Run Text="(редактирование)"/></TextBlock>
+                </Button>
+            </StackPanel>
+
+            <Grid Grid.Row="3">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition></ColumnDefinition>
+                    <ColumnDefinition></ColumnDefinition>
+                </Grid.ColumnDefinitions>
+                <TextBlock Grid.Column="0" Foreground="White" VerticalAlignment="Bottom" HorizontalAlignment="Left" Margin="15,15,15,15"
+                FontSize="12" FontStyle="Italic">Платные услуги поликлиники, alpa ver. 0.55</TextBlock>
+                <Button Grid.Column="1" Style="{StaticResource ExitButton}" VerticalAlignment="Bottom" HorizontalAlignment="Right" Margin="0,0,10,10" Click="Exit_Click">
+                    <TextBlock TextWrapping="Wrap" TextAlignment="Center" VerticalAlignment="Bottom" HorizontalAlignment="Left" Margin="15,15,15,15"> <Run Text="ВЫХОД "/><LineBreak/><Run Text="из программы"/></TextBlock>
+                </Button>
+
+            </Grid>
+
+        </Grid>
+
+        <StatusBar Grid.Row="4" 
+                   BorderBrush="Gray" 
+                   BorderThickness="0.5">
+            <StatusBar.ItemsPanel>
+                <ItemsPanelTemplate>
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="140"/>
+                            <ColumnDefinition Width="25"/>
+                            <ColumnDefinition Width="70"/>
+                            <ColumnDefinition Width="50"/>
+                            <ColumnDefinition Width="250"/>
+                            <ColumnDefinition Width="*"/>
+                        </Grid.ColumnDefinitions>
+                    </Grid>
+                </ItemsPanelTemplate>
+            </StatusBar.ItemsPanel>
+            <StatusBarItem Grid.Column="0">
+                <TextBlock  Style="{StaticResource StatusBar}"
+                    >Выделенный клиент</TextBlock>
+            </StatusBarItem>
+            <StatusBarItem Grid.Column="1">
+                <TextBlock  Style="{StaticResource StatusBar}"
+                    >ID</TextBlock>
+            </StatusBarItem>
+            <StatusBarItem Grid.Column="2">
+                <TextBox 
+                    Name="StatusBar_ClientID"
+                    Style="{StaticResource StatusBar_PASSIVE}"
+                    >xxxxxxx</TextBox>
+            </StatusBarItem>
+            <StatusBarItem Grid.Column="3">
+                <TextBlock  Style="{StaticResource StatusBar}"
+                    >Ф.И.О.</TextBlock>
+            </StatusBarItem>
+            <StatusBarItem Grid.Column="4">
+                <TextBox 
+                    Name="StatusBar_ClientFullName"
+                    Style="{StaticResource StatusBar_PASSIVE}"
+                    >xxxxxxx</TextBox>
+            </StatusBarItem>
+        </StatusBar>
+
+    </Grid>
+</Window>

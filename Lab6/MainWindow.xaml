@@ -1,0 +1,47 @@
+﻿<Window x:Class="Lab6.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Lab6"
+        xmlns:thrd="clr-namespace:System.ComponentModel;assembly=System"
+        mc:Ignorable="d"
+        Title="Denisovs lab6" Height="220" Width="350" WindowStyle="ToolWindow">
+    <Window.Resources>
+        <thrd:BackgroundWorker x:Key="worker"
+                               WorkerReportsProgress="True"
+                               DoWork="BackgroundWorker_DoWork"
+                               ProgressChanged="BackgroundWorker_ProgressChanged"
+                               RunWorkerCompleted="BackgroundWorker_RunWorkerCompleted"/>
+    </Window.Resources>
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="25"/>
+            <RowDefinition Height="35"/>
+            <RowDefinition Height="35"/>
+            <RowDefinition Height="35"/>
+            <RowDefinition/>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="200"/>
+            <ColumnDefinition Width="50"/>
+            <ColumnDefinition Width="75"/>
+        </Grid.ColumnDefinitions>
+        <Label Grid.Row="0" Content="Formula for calculation:" HorizontalAlignment="Center" Margin="0,0,0,0"/>
+        <Image Grid.Row="1" Grid.RowSpan="2" Source="Integral.png" Margin="5,5,5,5" />
+        <Label Grid.Row="0" Grid.Column="1" Grid.ColumnSpan="2" Content="Controllers:" HorizontalAlignment="Center" Margin="0,0,0,0"/>
+        <Button Grid.Row="1" Grid.Column="1" Grid.ColumnSpan="2" 
+                Name="Btn_InputData" Content="Input Data"  Margin="0,6,0,6" Click="InputDataWindow_Click"/>
+        <Button Grid.Row="2" Grid.Column="1" Grid.ColumnSpan="2" 
+                Name="Btn_CalculateBckWrk" Content="Calculate (BckWorker)"  Margin="0,6,0,6" 
+                Click="BckWorkerStartCalulation_Click" IsEnabled="False"/>
+        <Button Grid.Row="3" Grid.Column="1" Grid.ColumnSpan="2" 
+                Name="Btn_Calculate" Content="Calculate (Dispatcher)"  Margin="0,6,0,6" 
+                Click="StartCalulation_Click" IsEnabled="False" />
+        <TextBox Grid.Row="3" Grid.Column="0"  Name="Txb_Result" 
+                 HorizontalAlignment="Center" HorizontalContentAlignment="Center" 
+                 Text="Output data"  IsReadOnly="True" Margin="0,6,0,6"/>
+        <ProgressBar Grid.Row="4" Grid.ColumnSpan="3" Name="PrgBr" 
+                     Margin="15,15,15,15"/>
+    </Grid>
+</Window>

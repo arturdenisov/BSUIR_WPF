@@ -1,0 +1,28 @@
+﻿<Window x:Class="Lab6.Window_DataInput"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Lab6"
+        mc:Ignorable="d"
+        Title="Input Data" Height="200" Width="250" ResizeMode="NoResize" Topmost="True" WindowStartupLocation="CenterScreen">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="180"/>
+            <ColumnDefinition/>
+        </Grid.ColumnDefinitions>
+        <Label Grid.Row="0" Grid.Column="0" Content="The beginning of integration:" VerticalAlignment="Center"/>
+        <Label Grid.Row="1" Grid.Column="0" Content="The end of integration:" VerticalAlignment="Center"/>
+        <Label Grid.Row="2" Grid.Column="0" Content="Number of intervals:" VerticalAlignment="Center"/>
+        <Button Grid.Row="3" Grid.ColumnSpan="2" Content="Submit" Margin="40,10,40,10" Click="InputDataSubmit_Click"/>
+        <TextBox Grid.Row="0" Grid.Column="1" Name="Txb_StartInt" Margin="6,6,6,6" />
+        <TextBox Grid.Row="1" Grid.Column="1" Name="Txb_StartEnd" Margin="6,6,6,6" />
+        <TextBox Grid.Row="2" Grid.Column="1" Name="Txb_NumInt" Margin="6,6,6,6" />
+    </Grid>
+</Window>

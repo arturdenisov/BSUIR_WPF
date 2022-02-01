@@ -1,0 +1,111 @@
+﻿<UserControl x:Class="DenisovArt_Kurs.UserControls.DoctorsUserControl"
+ xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:DenisovArt_Kurs.UserControls"
+             mc:Ignorable="d" 
+             Background="White"
+             Style="{StaticResource StandartUseControl}">
+    <UserControl.Resources>
+        <Style TargetType="ComboBoxItem">
+            <Setter Property="BorderThickness" Value="0"/>
+        </Style>
+    </UserControl.Resources>	
+    
+    <Grid Height="610" Width="800">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="25"></RowDefinition>
+            <RowDefinition Height="5"></RowDefinition>
+            <RowDefinition></RowDefinition>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="250"></ColumnDefinition>
+            <ColumnDefinition></ColumnDefinition>
+        </Grid.ColumnDefinitions>
+
+        <Rectangle  Grid.Row="0" Grid.RowSpan="2" Grid.Column="0" Grid.ColumnSpan="2"
+               Fill="MidnightBlue" Stretch="Fill" />
+        <Image  Grid.Row="2" Grid.Column="0" Grid.ColumnSpan="2"
+               Source="/Images/UC_Doctor.jpg"  Stretch="Fill" 
+                Opacity="0.6"/>
+
+        <TextBlock Grid.Row="0" Grid.ColumnSpan="2" Foreground="White"  
+                   Style="{StaticResource HeaderUseControl}" 
+                   Margin="0,0,0,0">Медицинские работники учреждения</TextBlock>
+        <Separator Grid.Row="1" Grid.ColumnSpan="2" BorderBrush="Gray"></Separator>
+
+        <StackPanel Grid.Row="2" Grid.Column="0">
+            <GroupBox Header=" П О И С К " Height="300" >
+                <StackPanel Height="275">
+                    <TextBlock Height="21" Foreground="Black">(по любому полю)</TextBlock>
+                    <Label Height="27" Foreground="Black" FontWeight="Bold">Личный номер:</Label>
+                    <Border Style="{StaticResource OvalBorder}">
+                        <TextBox Name="tbxDocID" Style ="{StaticResource ValidationFailed}">
+                            <TextBox.Text>
+                                <Binding Path="MyDocID" ValidatesOnExceptions="True" 
+                                         UpdateSourceTrigger="PropertyChanged"/>
+                            </TextBox.Text>
+                        </TextBox>    
+                    </Border>
+                    <Label Foreground="Black" FontWeight="Bold">Фамилия Врача:</Label>
+                    <Border Style="{StaticResource OvalBorder}">
+                        <TextBox Name="tbxSecName" Style ="{StaticResource ValidationFailed}">
+                            <TextBox.Text>
+                                <Binding Path="MySecondName" ValidatesOnExceptions="True" 
+                                         UpdateSourceTrigger="PropertyChanged"/>
+                            </TextBox.Text>
+                        </TextBox>
+                    </Border>
+                    <Label Foreground="Black" FontWeight="Bold" >Профиль (специальность):</Label>
+                    <Border Style="{StaticResource OvalBorder}">
+                        <ComboBox Name="combbSpecialities"
+                                  FontWeight="Normal" Height="25" 
+                                  Background="White" BorderBrush="White" 
+                                  BorderThickness="0"
+                                  ItemsSource ="{Binding Path=docSpecsColl}"
+                                  DisplayMemberPath="SpecialityTitle"
+                                  SelectedIndex="0">
+                        </ComboBox>
+                    </Border>
+                    <Button x:Name="Find_Button" Content="Найти" Click="Find_Button_Click"/>
+                    <Button Name="Reboot_Button" Content="Сброс" Click="Reboot_Button_Click"/>
+
+
+                </StackPanel>
+            </GroupBox>
+            <GroupBox Header="Ф У Н К Ц И И " Height="170">
+                <StackPanel>
+                    <Button x:Name="Add_Button" Content="Добавить работника" Click="Add_Button_Click"/>
+                    <Button x:Name="Edit_Button" Content="Редактировать  работника" Click="Edit_Button_Click"/>
+                    <Button x:Name="Delete_Button" Content="Удалить  работника" Click="Delete_Button_Click"/>
+                    <Button x:Name="ChangeSpec_Button" Content="Изменить профили работников" 
+                            Click="ChangeSpec_Button_Click"/>
+                </StackPanel>
+            </GroupBox>
+            <GroupBox Header="X M L " >
+                <StackPanel>
+                    <Button x:Name="Export" Content="Экспорт" Click="Export_Click"/>
+                    <Button x:Name="Import" Content="Импорт" Click="Import_Click"/>
+                </StackPanel>
+            </GroupBox>
+        </StackPanel>
+
+        <DataGrid Name="dgrid"
+            Grid.Row="2" Grid.Column="1" 
+                  AutoGenerateColumns="false" Margin="15,10,15,20"
+                  IsReadOnly="true"
+                  ItemsSource="{Binding}">
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="ID" Binding="{Binding DocID}"/>
+                <DataGridTextColumn Header="Специальность" Binding="{Binding SpecialityTitle}"/>
+                <DataGridTextColumn Header="Кабинет" Binding="{Binding MyRoom}"/>
+                <DataGridTextColumn Header="Фамилия" Binding="{Binding SecondName}"/>
+                <DataGridTextColumn Header="Имя" Binding="{Binding FirstName}"/>
+                <DataGridTextColumn Header="Отчество" Binding="{Binding ThirdName}"/>
+            </DataGrid.Columns>
+        </DataGrid>
+
+
+    </Grid>
+</UserControl>
